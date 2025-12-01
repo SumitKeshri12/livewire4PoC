@@ -93,12 +93,12 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
                 <div class="space-y-4">
                     <div>
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onSend & onResponse</h3>
-                        <flux:button 
+                        <button 
                             wire:click="refresh" 
-                            style="padding: 0.5rem 1rem; background: #4f46e5; color: white; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500;"
+                            class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium transition-colors"
                         >
                             Send Request
-                        </flux:button>
+                        </button>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                             Check browser console for "sent" and "received" logs
                         </p>
@@ -107,18 +107,18 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
                     <div class="border-t border-zinc-200 dark:border-zinc-700 pt-4">
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onError (419 Session Expired)</h3>
                         <div class="flex gap-2">
-                            <flux:button 
+                            <button 
                                 wire:click="invalidateSession" 
-                                style="padding: 0.5rem 1rem; background: #d97706; color: white; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500;"
+                                class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-sm font-medium transition-colors"
                             >
                                 Invalidate Session
-                            </flux:button>
-                            <flux:button 
+                            </button>
+                            <button 
                                 wire:click="refresh" 
-                                style="padding: 0.5rem 1rem; background: #52525b; color: white; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500;"
+                                class="px-4 py-2 bg-zinc-600 hover:bg-zinc-700 text-white rounded-lg text-sm font-medium transition-colors"
                             >
                                 Trigger Action
-                            </flux:button>
+                            </button>
                         </div>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                             First invalidate session, then trigger action to see custom 419 handler
@@ -127,12 +127,12 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
 
                     <div class="border-t border-zinc-200 dark:border-zinc-700 pt-4">
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onError (404 Not Found)</h3>
-                        <flux:button 
+                        <button 
                             wire:click="trigger404" 
-                            style="padding: 0.5rem 1rem; background: #dc2626; color: white; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500;"
+                            class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors"
                         >
                             Trigger 404
-                        </flux:button>
+                        </button>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                             Custom alert will show instead of default error
                         </p>
@@ -140,12 +140,12 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
 
                     <div class="border-t border-zinc-200 dark:border-zinc-700 pt-4">
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onRedirect</h3>
-                        <flux:button 
+                        <button 
                             wire:click="triggerRedirect" 
-                            style="padding: 0.5rem 1rem; background: #9333ea; color: white; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500;"
+                            class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-colors"
                         >
                             Trigger Redirect
-                        </flux:button>
+                        </button>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                             Redirect will be intercepted and shown in alert
                         </p>
@@ -160,13 +160,13 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
                 <div class="space-y-4">
                     <div>
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">Action Interception</h3>
-                        <flux:button 
+                        <button 
                             wire:click="cancelableAction" 
                             id="cancelable-button"
-                            style="padding: 0.5rem 1rem; background: #059669; color: white; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500;"
+                            class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium transition-colors"
                         >
                             Cancelable Action
-                        </flux:button>
+                        </button>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                             This action is intercepted and canceled - check console
                         </p>
