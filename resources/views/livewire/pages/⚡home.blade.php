@@ -134,6 +134,24 @@ new #[Layout('layouts.app'), Title('LiveWire 4 Features PoC')] class extends Com
                     Explore →
                 </div>
             </a>
+
+            <!-- Multi-Format Response Demo -->
+            <a href="/multi-response-demo" wire:navigate class="group bg-white dark:bg-zinc-800 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 p-6 border border-zinc-200 dark:border-zinc-700 hover:border-rose-500 dark:hover:border-rose-500">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="p-3 bg-rose-100 dark:bg-rose-900/30 rounded-lg group-hover:bg-rose-500 transition-colors">
+                        <svg class="w-6 h-6 text-rose-600 dark:text-rose-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">Multi-Format Response</h3>
+                </div>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+                    One component, multiple formats. Return HTML, JSON, or PDF based on request headers. Full API support with GET/POST.
+                </p>
+                <div class="flex items-center text-sm font-medium text-rose-600 dark:text-rose-400 group-hover:text-rose-700">
+                    Explore →
+                </div>
+            </a>
         </div>
 
         <!-- Use Cases Section -->

@@ -3,36 +3,53 @@
 namespace App\Livewire\Attributes;
 
 use Livewire\Features\SupportAttributes\Attribute;
-use Illuminate\Http\Response;
 
 abstract class FormatAware extends Attribute
 {
     protected $methods = ['GET'];
     protected $accepts = ['*/*'];
 
-    public function render($component, $view)
+    public function __construct()
     {
-        if (! in_array(request()->method(), $this->methods)) {
-            return;
+        // Constructor to handle Livewire attribute instantiation
+    }
+
+    // boot method removed
+
+    public function render($view)
+    {
+        // Check if we should intercept this request
+        if (!$this->shouldIntercept()) {
+            return null;
         }
 
-        // Check if the Accept header contains our content type
+        $response = $this->response($this->component, $view);
+        
+        if ($response) {
+            $response->send();
+            exit;
+        }
+    }
+
+    protected function shouldIntercept(): bool
+    {
+        // Check HTTP method
+        if (!in_array(request()->method(), $this->methods)) {
+            return false;
+        }
+
+        // Check Accept header
         $acceptHeader = request()->header('Accept', '');
-        $matches = false;
         
         foreach ($this->accepts as $contentType) {
-            if (str_contains($acceptHeader, $contentType)) {
-                $matches = true;
-                break;
+            if ($contentType === '*/*' || str_contains($acceptHeader, $contentType)) {
+                return true;
             }
         }
         
-        if (! $matches) {
-            return;
-        }
-
-        return $this->response($component, $view);
+        return false;
     }
 
     abstract protected function response($component, $view);
 }
+

@@ -28,5 +28,5 @@ Route::livewire('/islands/infinite-scroll', 'pages.⚡infinite-scroll');
 Route::livewire('/islands/chat', 'pages.⚡chat');
 Route::livewire('/islands/load-more', 'pages.⚡load-more');
 
-// Multi-Response Demo
-Route::get('/multi-response-demo', App\Livewire\Pages\MultiResponseDemo::class);
+// Multi-Response Demo (supports GET and POST for API functionality)
+Route::match(['get', 'post'], '/multi-response-demo', App\Livewire\Pages\MultiResponseDemo::class);

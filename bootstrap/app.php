@@ -11,7 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->validateCsrfTokens(except: [
+            'multi-response-demo', // Allow API requests without CSRF token
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
