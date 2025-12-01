@@ -67,8 +67,8 @@ Pagination with named islands and append mode
 
 #### 10. **Kanban Dashboard** (`/dashboard`)
 Drag-and-drop Kanban board with:
-- Sortable columns using Sortable.js
-- Sortable cards within columns
+- Sortable columns using Livewire 4's `wire:sort`
+- Sortable cards within columns using `wire:sort:group`
 - Persistent state management
 - Real-time updates
 
@@ -80,7 +80,6 @@ Drag-and-drop Kanban board with:
 - **LiveWire Blaze** 0.1.0 - Performance optimization engine
 - **Flux UI** 2.7 - Modern UI components
 - **Tailwind CSS** 4.0 - Utility-first CSS framework
-- **Sortable.js** 1.15.6 - Drag-and-drop functionality
 - **SQLite** - Database
 
 ## 📋 Prerequisites
@@ -250,7 +249,7 @@ This is a proof of concept project for learning and demonstration purposes. Feel
 ## 📝 Notes
 
 - This project uses **LiveWire 4 Beta** - not recommended for production yet
-- The Kanban board uses Sortable.js for drag-and-drop functionality
+- The Kanban board uses Livewire 4's native `wire:sort` for drag-and-drop functionality
 - All demos are interactive and include code examples
 - Database uses SQLite for simplicity
 

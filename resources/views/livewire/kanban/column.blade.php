@@ -47,7 +47,7 @@ new class extends Component {
     }
     
     // Disabled to prevent column disappearing during drag operations
-    // The refresh was causing Livewire to re-render while Sortable.js was manipulating DOM
+    // The refresh was causing Livewire to re-render while wire:sort was manipulating DOM
     // #[On('card-updated')]
     // #[On('card-added')]
     // #[On('card-moved')]
