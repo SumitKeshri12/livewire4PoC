@@ -30,3 +30,6 @@ Route::livewire('/islands/load-more', 'pages.⚡load-more');
 
 // Multi-Response Demo (supports GET and POST for API functionality)
 Route::match(['get', 'post'], '/multi-response-demo', App\Livewire\Pages\MultiResponseDemo::class);
+
+// Observer Pattern Demo
+Route::get('/observer-demo', App\Livewire\Observer\ObserverDemo::class);
