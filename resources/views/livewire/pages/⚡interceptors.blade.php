@@ -48,11 +48,14 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
         </div>
 
         <!-- What Are Request Interceptors? -->
-        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg border border-blue-200 dark:border-blue-800 p-6 mb-8">
-            <h2 class="text-xl font-semibold text-blue-900 dark:text-blue-100 mb-3">💡 What Are Request Interceptors?</h2>
-            
+        <div
+            class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg border border-blue-200 dark:border-blue-800 p-6 mb-8">
+            <h2 class="text-xl font-semibold text-blue-900 dark:text-blue-100 mb-3">💡 What Are Request Interceptors?
+            </h2>
+
             <p class="text-sm text-blue-800 dark:text-blue-200 mb-4">
-                Request Interceptors let you "listen" to LiveWire's HTTP requests and responses. Think of them as middleware for your frontend - 
+                Request Interceptors let you "listen" to LiveWire's HTTP requests and responses. Think of them as
+                middleware for your frontend -
                 they run automatically whenever LiveWire communicates with your server.
             </p>
 
@@ -89,14 +92,12 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
             <!-- Global Interceptors -->
             <div class="bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 p-6">
                 <h2 class="text-xl font-semibold text-zinc-900 dark:text-white mb-4">Global Interceptors</h2>
-                
+
                 <div class="space-y-4">
                     <div>
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onSend & onResponse</h3>
-                        <button 
-                            wire:click="refresh" 
-                            class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium transition-colors"
-                        >
+                        <button wire:click="refresh"
+                            class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium transition-colors">
                             Send Request
                         </button>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
@@ -105,18 +106,15 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
                     </div>
 
                     <div class="border-t border-zinc-200 dark:border-zinc-700 pt-4">
-                        <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onError (419 Session Expired)</h3>
+                        <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onError (419 Session
+                            Expired)</h3>
                         <div class="flex gap-2">
-                            <button 
-                                wire:click="invalidateSession" 
-                                class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-sm font-medium transition-colors"
-                            >
+                            <button wire:click="invalidateSession"
+                                class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-sm font-medium transition-colors">
                                 Invalidate Session
                             </button>
-                            <button 
-                                wire:click="refresh" 
-                                class="px-4 py-2 bg-zinc-600 hover:bg-zinc-700 text-white rounded-lg text-sm font-medium transition-colors"
-                            >
+                            <button wire:click="refresh"
+                                class="px-4 py-2 bg-zinc-600 hover:bg-zinc-700 text-white rounded-lg text-sm font-medium transition-colors">
                                 Trigger Action
                             </button>
                         </div>
@@ -126,11 +124,10 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
                     </div>
 
                     <div class="border-t border-zinc-200 dark:border-zinc-700 pt-4">
-                        <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onError (404 Not Found)</h3>
-                        <button 
-                            wire:click="trigger404" 
-                            class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors"
-                        >
+                        <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onError (404 Not Found)
+                        </h3>
+                        <button wire:click="trigger404"
+                            class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors">
                             Trigger 404
                         </button>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
@@ -140,10 +137,8 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
 
                     <div class="border-t border-zinc-200 dark:border-zinc-700 pt-4">
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onRedirect</h3>
-                        <button 
-                            wire:click="triggerRedirect" 
-                            class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-colors"
-                        >
+                        <button wire:click="triggerRedirect"
+                            class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-colors">
                             Trigger Redirect
                         </button>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
@@ -154,17 +149,15 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
             </div>
 
             <!-- Component-Level Interceptors -->
-            <div class="bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 p-6">
+            <div x-data="interceptorDemo"
+                class="bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 p-6">
                 <h2 class="text-xl font-semibold text-zinc-900 dark:text-white mb-4">Component-Level Interceptors</h2>
-                
+
                 <div class="space-y-4">
                     <div>
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">Action Interception</h3>
-                        <button 
-                            wire:click="cancelableAction" 
-                            id="cancelable-button"
-                            class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium transition-colors"
-                        >
+                        <button wire:click="cancelableAction" id="cancelable-button"
+                            class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium transition-colors">
                             Cancelable Action
                         </button>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
@@ -175,9 +168,9 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
                     <div class="border-t border-zinc-200 dark:border-zinc-700 pt-4">
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-3">Activity Logs</h3>
                         <div class="bg-zinc-50 dark:bg-zinc-900 rounded-lg p-4 max-h-48 overflow-y-auto">
-                            @if(count($logs) > 0)
+                            @if (count($logs) > 0)
                                 <ul class="space-y-1">
-                                    @foreach($logs as $log)
+                                    @foreach ($logs as $log)
                                         <li class="text-xs text-zinc-600 dark:text-zinc-400 font-mono">
                                             {{ $log }}
                                         </li>
@@ -195,11 +188,12 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
         <!-- Code Examples -->
         <div class="bg-white dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 p-6">
             <h2 class="text-xl font-semibold text-zinc-900 dark:text-white mb-4">Code Examples</h2>
-            
+
             <div class="space-y-6">
                 <!-- Global Interceptor Example -->
                 <div>
-                    <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">Global Request Interceptor</h3>
+                    <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">Global Request Interceptor
+                    </h3>
                     <pre class="bg-zinc-900 text-zinc-100 p-4 rounded-lg overflow-x-auto text-xs">
                         <code>
                             document.addEventListener('livewire:init', () => {
@@ -236,7 +230,8 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
 
                 <!-- Component-Level Interceptor Example -->
                 <div>
-                    <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">Component-Level Action Interception</h3>
+                    <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">Component-Level Action
+                        Interception</h3>
                     <pre class="bg-zinc-900 text-zinc-100 p-4 rounded-lg overflow-x-auto text-xs">
                         <code>
                             // Inside an Alpine.js component
@@ -257,56 +252,93 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
 </div>
 
 @assets
-<script>
-    document.addEventListener('livewire:init', (event) => {
-        Livewire.interceptRequest(({onResponse, onRedirect, onError}) => {
-            console.log('🚀 Request sent');
+    <script>
+        document.addEventListener('livewire:init', (event) => {
+            Livewire.interceptRequest(({
+                onResponse,
+                onRedirect,
+                onError
+            }) => {
+                console.log('🚀 Request sent');
 
-            onResponse(()=> console.log('✅ Response received'));
+                onResponse(() => console.log('✅ Response received'));
 
-            onRedirect(({ url, preventDefault }) => {
-                preventDefault();
-                alert('Redirecting to: ' + url);
-            });
-
-            onError(({ response, preventDefault }) => {
-                preventDefault();
-                alert('Error: ' + response);
-            }) 
-        });
-    });
-</script>
-<!-- <script>
-    // Global Livewire Request Hooks
-    document.addEventListener('livewire:init', () => {
-        Livewire.hook('request', ({ respond, succeed, fail }) => {
-            // Log all requests
-            console.log('🚀 Request sent');
-            
-            respond(({ status, response }) => {
-                console.log('✅ Response received:', status);
-            });
-            
-            succeed(({ status, json }) => {
-                console.log('✅ Request succeeded:', json);
-            });
-            
-            fail(({ status, content, preventDefault }) => {
-                // Custom 419 Session Expired handler
-                if (status === 419) {
+                onRedirect(({
+                    url,
+                    preventDefault
+                }) => {
                     preventDefault();
-                    alert('⚠️ Session expired! Please refresh the page.');
-                }
-                
-                // Custom 404 handler
-                if (status === 404) {
+                    alert('Redirecting to: ' + url);
+                });
+
+                onError(({
+                    response,
+                    preventDefault
+                }) => {
                     preventDefault();
-                    alert('❌ Resource not found (404)');
+                    alert('Error: ' + response);
+                })
+            });
+
+            Alpine.data('interceptorDemo', () => ({
+                init() {
+                    // Determine if $wire.intercept exists, otherwise fallback or log
+                    if (this.$wire && this.$wire.intercept) {
+                        this.$wire.intercept('cancelableAction', (action) => {
+                            console.log('🛑 Action intercepted:', action);
+                            action.cancel();
+                            alert('🛑 Action "cancelableAction" was intercepted and canceled!');
+                        });
+                    } else {
+                        console.warn('$wire.intercept is not available in this Livewire version.');
+                    }
                 }
+            }));
+        });
+    </script>
+    <!-- <script>
+        // Global Livewire Request Hooks
+        document.addEventListener('livewire:init', () => {
+            Livewire.hook('request', ({
+                respond,
+                succeed,
+                fail
+            }) => {
+                // Log all requests
+                console.log('🚀 Request sent');
+
+                respond(({
+                    status,
+                    response
+                }) => {
+                    console.log('✅ Response received:', status);
+                });
+
+                succeed(({
+                    status,
+                    json
+                }) => {
+                    console.log('✅ Request succeeded:', json);
+                });
+
+                fail(({
+                    status,
+                    content,
+                    preventDefault
+                }) => {
+                    // Custom 419 Session Expired handler
+                    if (status === 419) {
+                        preventDefault();
+                        alert('⚠️ Session expired! Please refresh the page.');
+                    }
+
+                    // Custom 404 handler
+                    if (status === 404) {
+                        preventDefault();
+                        alert('❌ Resource not found (404)');
+                    }
+                });
             });
         });
-    });
-</script> -->
-
-
+    </script> -->
 @endassets
