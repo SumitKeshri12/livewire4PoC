@@ -9,21 +9,25 @@ use App\Models\Invoice;
 use Livewire\Component;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Validate;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
 #[GetJSON]
 #[PostJSON]
 #[GetPDF]
+#[Layout('layouts.app')]
+#[Title('Multi Response Demo')]
 class MultiResponseDemo extends Component
 {
     #[Validate]
     public $invoice_number = '';
-    
+
     #[Validate]
     public $customer_name = '';
-    
+
     #[Validate]
     public $amount = '';
-    
+
     #[Validate]
     public $status = 'pending';
 
@@ -46,12 +50,12 @@ class MultiResponseDemo extends Component
     public function createInvoice()
     {
         $validated = $this->validate();
-        
+
         Invoice::create($validated);
-        
+
         $this->reset(['invoice_number', 'customer_name', 'amount']);
         $this->status = 'pending';
-        
+
         session()->flash('success', 'Invoice created successfully!');
     }
 
@@ -60,4 +64,3 @@ class MultiResponseDemo extends Component
         return view('livewire.pages.multi-response-demo');
     }
 }
-
