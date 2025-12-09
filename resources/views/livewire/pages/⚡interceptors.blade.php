@@ -96,10 +96,9 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
                 <div class="space-y-4">
                     <div>
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onSend & onResponse</h3>
-                        <button wire:click="refresh"
-                            class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium transition-colors">
+                        <flux:button wire:click="refresh" variant="primary" icon="arrow-path" color="green">
                             Send Request
-                        </button>
+                        </flux:button>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                             Check browser console for "sent" and "received" logs
                         </p>
@@ -109,14 +108,12 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onError (419 Session
                             Expired)</h3>
                         <div class="flex gap-2">
-                            <button wire:click="invalidateSession"
-                                class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-sm font-medium transition-colors">
+                            <flux:button wire:click="invalidateSession" variant="danger" icon="key" color="red">
                                 Invalidate Session
-                            </button>
-                            <button wire:click="refresh"
-                                class="px-4 py-2 bg-zinc-600 hover:bg-zinc-700 text-white rounded-lg text-sm font-medium transition-colors">
+                            </flux:button>
+                            <flux:button wire:click="refresh" variant="primary" icon="arrow-path" color="green">
                                 Trigger Action
-                            </button>
+                            </flux:button>
                         </div>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                             First invalidate session, then trigger action to see custom 419 handler
@@ -126,10 +123,9 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
                     <div class="border-t border-zinc-200 dark:border-zinc-700 pt-4">
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onError (404 Not Found)
                         </h3>
-                        <button wire:click="trigger404"
-                            class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors">
+                        <flux:button wire:click="trigger404" variant="danger" icon="x-circle" color="red">
                             Trigger 404
-                        </button>
+                        </flux:button>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                             Custom alert will show instead of default error
                         </p>
@@ -137,10 +133,9 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
 
                     <div class="border-t border-zinc-200 dark:border-zinc-700 pt-4">
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">onRedirect</h3>
-                        <button wire:click="triggerRedirect"
-                            class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-colors">
+                        <flux:button wire:click="triggerRedirect" variant="primary" icon="arrow-right" color="green">
                             Trigger Redirect
-                        </button>
+                        </flux:button>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                             Redirect will be intercepted and shown in alert
                         </p>
@@ -156,10 +151,10 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
                 <div class="space-y-4">
                     <div>
                         <h3 class="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">Action Interception</h3>
-                        <button wire:click="cancelableAction" id="cancelable-button"
-                            class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-medium transition-colors">
+                        <flux:button wire:click="cancelableAction" id="cancelable-button" variant="primary"
+                            icon="x-mark" color="red">
                             Cancelable Action
-                        </button>
+                        </flux:button>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                             This action is intercepted and canceled - check console
                         </p>
@@ -296,49 +291,4 @@ new #[Layout('layouts.app'), Title('Request Interceptors - LiveWire 4')] class e
             }));
         });
     </script>
-    <!-- <script>
-        // Global Livewire Request Hooks
-        document.addEventListener('livewire:init', () => {
-            Livewire.hook('request', ({
-                respond,
-                succeed,
-                fail
-            }) => {
-                // Log all requests
-                console.log('🚀 Request sent');
-
-                respond(({
-                    status,
-                    response
-                }) => {
-                    console.log('✅ Response received:', status);
-                });
-
-                succeed(({
-                    status,
-                    json
-                }) => {
-                    console.log('✅ Request succeeded:', json);
-                });
-
-                fail(({
-                    status,
-                    content,
-                    preventDefault
-                }) => {
-                    // Custom 419 Session Expired handler
-                    if (status === 419) {
-                        preventDefault();
-                        alert('⚠️ Session expired! Please refresh the page.');
-                    }
-
-                    // Custom 404 handler
-                    if (status === 404) {
-                        preventDefault();
-                        alert('❌ Resource not found (404)');
-                    }
-                });
-            });
-        });
-    </script> -->
 @endassets
