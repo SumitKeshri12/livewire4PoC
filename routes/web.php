@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -38,3 +39,7 @@ Route::match(['get', 'post'], '/multi-response-demo', App\Livewire\Pages\MultiRe
 
 // Observer Pattern Demo
 Route::get('/observer-demo', App\Livewire\Observer\ObserverDemo::class);
+
+Route::get('db-seed', function () {
+    Artisan::call('db:seed');
+});
