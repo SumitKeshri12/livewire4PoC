@@ -28,6 +28,11 @@ Route::livewire('/islands/infinite-scroll', 'pages.⚡infinite-scroll');
 Route::livewire('/islands/chat', 'pages.⚡chat');
 Route::livewire('/islands/load-more', 'pages.⚡load-more');
 
+// Product CRUD
+Route::livewire('/products', 'pages.products.index')->name('products.index');
+Route::livewire('/products/create', 'pages.products.create')->name('products.create');
+Route::livewire('/products/{product}/edit', 'pages.products.edit')->name('products.edit');
+
 // Multi-Response Demo (supports GET and POST for API functionality)
 Route::match(['get', 'post'], '/multi-response-demo', App\Livewire\Pages\MultiResponseDemo::class);
 

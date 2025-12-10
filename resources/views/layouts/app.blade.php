@@ -179,6 +179,21 @@
                     </svg>
                     Observer Pattern
                 </a>
+
+                <div class="pt-4 pb-2">
+                    <p class="px-3 text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+                        CRUD Demo</p>
+                </div>
+
+                <a href="/products" wire:navigate
+                    class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 {{ request()->is('products*') ? 'bg-zinc-100 dark:bg-zinc-700 text-zinc-900 dark:text-white' : 'text-zinc-700 dark:text-zinc-300' }}">
+                    <svg class="w-5 h-5 bg-indigo-500 text-white rounded p-0.5" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                    </svg>
+                    Products CRUD
+                </a>
             </nav>
         </aside>
 
@@ -189,6 +204,60 @@
     </div>
 
     @livewireScripts
+
+    <script>
+        document.addEventListener('livewire:init', () => {
+            // Global Toast Listener
+            Livewire.on('show-toast', ({
+                type,
+                message
+            }) => {
+                const toast = document.createElement('div');
+                // Use Tailwind classes for styling (Success vs Error)
+                const bgClass = type === 'success' ? 'bg-emerald-600' : 'bg-rose-600';
+                toast.className =
+                    `fixed bottom-6 right-6 px-6 py-3 rounded-lg shadow-xl text-white transform transition-all duration-500 translate-y-10 opacity-0 z-50 flex items-center gap-3 ${bgClass}`;
+
+                // Icon based on type
+                const icon = type === 'success' ?
+                    '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>' :
+                    '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+
+                toast.innerHTML = `${icon}<span class="font-medium">${message}</span>`;
+
+                document.body.appendChild(toast);
+
+                // Animate In
+                requestAnimationFrame(() => {
+                    toast.classList.remove('translate-y-10', 'opacity-0');
+                });
+
+                // Remove after 3s
+                setTimeout(() => {
+                    toast.classList.add('translate-y-10', 'opacity-0');
+                    setTimeout(() => toast.remove(), 500);
+                }, 3000);
+            });
+
+            // Global Error Interceptor
+            Livewire.hook('request', ({
+                fail
+            }) => {
+                fail(({
+                    status,
+                    content,
+                    preventDefault
+                }) => {
+                    if (status >= 500) {
+                        Livewire.dispatch('show-toast', {
+                            type: 'error',
+                            message: `Server Error (${status})`
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
