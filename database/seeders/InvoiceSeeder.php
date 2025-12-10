@@ -32,7 +32,10 @@ class InvoiceSeeder extends Seeder
         ];
 
         foreach ($invoices as $invoice) {
-            Invoice::create($invoice);
+            Invoice::updateOrCreate(
+                ['invoice_number' => $invoice['invoice_number']],
+                $invoice
+            );
         }
     }
 }

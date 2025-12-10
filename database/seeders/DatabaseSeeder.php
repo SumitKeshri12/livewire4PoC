@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
 class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
@@ -16,8 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        DB::table('messages')->truncate();
-        // User::factory(30)->create();
+        $this->call([
+            InvoiceSeeder::class,
+            ProductSeeder::class,
+            KanbanSeeder::class,
+        ]);
     }
 }
