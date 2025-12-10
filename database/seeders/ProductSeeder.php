@@ -13,7 +13,8 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('products')->truncate();
-        Product::factory()->count(100)->create();
+        if (Product::count() === 0) {
+            Product::factory()->count(100)->create();
+        }
     }
 }

@@ -18,25 +18,32 @@ class KanbanSeeder extends Seeder
             ['name' => 'In Progress', 'position' => 2],
             ['name' => 'Done', 'position' => 3],
         ];
-        
+
         foreach ($columns as $columnData) {
-            $column = \App\Models\Column::create($columnData);
-            
+            $column = \App\Models\Column::firstOrCreate(
+                ['name' => $columnData['name']],
+                ['position' => $columnData['position']]
+            );
+
             // Add cards to each column
             $cardCounts = ['Backlog' => 10, 'To Do' => 8, 'In Progress' => 6, 'Done' => 6];
             $count = $cardCounts[$column->name];
-            
+
             for ($i = 0; $i < $count; $i++) {
-                \App\Models\Card::create([
-                    'column_id' => $column->id,
-                    'title' => $this->getCardTitle($column->name, $i),
-                    'description' => $this->getCardDescription($column->name, $i),
-                    'position' => $i,
-                ]);
+                \App\Models\Card::firstOrCreate(
+                    [
+                        'column_id' => $column->id,
+                        'title' => $this->getCardTitle($column->name, $i),
+                    ],
+                    [
+                        'description' => $this->getCardDescription($column->name, $i),
+                        'position' => $i,
+                    ]
+                );
             }
         }
     }
-    
+
     private function getCardTitle($columnName, $index)
     {
         $titles = [
@@ -79,10 +86,10 @@ class KanbanSeeder extends Seeder
                 'Add sample data',
             ],
         ];
-        
+
         return $titles[$columnName][$index] ?? "Task " . ($index + 1);
     }
-    
+
     private function getCardDescription($columnName, $index)
     {
         $descriptions = [
@@ -125,7 +132,7 @@ class KanbanSeeder extends Seeder
                 'Created and ran seeder to populate database with sample Kanban data.',
             ],
         ];
-        
+
         return $descriptions[$columnName][$index] ?? "Description for task " . ($index + 1);
     }
 }
