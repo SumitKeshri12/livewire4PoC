@@ -228,7 +228,7 @@ php artisan test
 
 ## 📚 Learning Resources
 
-- [LiveWire 4 Documentation](https://livewire.laravel.com/docs)
+- [LiveWire 4 Documentation](https://livewire.laravel.com/docs/4.x/quickstart)
 - [Laravel 12 Documentation](https://laravel.com/docs/12.x)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [Flux UI Components](https://fluxui.dev)
