@@ -65,7 +65,21 @@ Pagination with named islands and append mode
 
 ### Additional Features
 
-#### 10. **Kanban Dashboard** (`/dashboard`)
+#### 10. **Multi-Format Responses** (`/multi-response-demo`)
+One component handling multiple output formats based on request headers:
+- HTML (Standard render)
+- JSON (API response)
+- PDF (Document generation)
+- Supports Attributes like `#[GetJSON]`, `#[PostJSON]`, `#[GetPDF]`
+
+#### 11. **Observer Pattern** (`/observer-demo`)
+Interactive demonstration of decoupled communication:
+- Subject-Observer relationship using Livewire properties
+- Real-time updates across multiple components
+- Architectural deep-dive into the "Publisher-Subscriber" model
+- Comparison of implementation approaches
+
+#### 12. **Kanban Dashboard** (`/dashboard`)
 Drag-and-drop Kanban board with:
 - Sortable columns using Livewire 4's `wire:sort`
 - Sortable cards within columns using `wire:sort:group`
@@ -198,6 +212,8 @@ livewire4PoC/
 | `/islands/infinite-scroll` | Infinite scroll use case |
 | `/islands/chat` | Chat interface use case |
 | `/islands/load-more` | Load more pagination use case |
+| `/multi-response-demo` | Multi-format (HTML/JSON/PDF) response demo |
+| `/observer-demo` | Observer Pattern interactive demo |
 | `/dashboard` | Kanban board dashboard |
 
 ## 🧪 Testing
