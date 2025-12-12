@@ -257,19 +257,68 @@
                 }, 3000);
             });
 
-            // Global Error Interceptor
-            Livewire.hook('request', ({
-                fail
+            // Custom Helper to match User's Preferred API
+            Livewire.interceptRequest = (callback) => {
+                Livewire.hook('request', (request) => {
+                    const {
+                        respond,
+                        succeed,
+                        fail
+                    } = request;
+
+                    callback({
+                        onResponse: (cb) => respond(({
+                            status,
+                            content
+                        }) => cb({
+                            status,
+                            response: content
+                        })),
+                        onRedirect: (cb) => succeed(({
+                            status,
+                            content,
+                            preventDefault
+                        }) => {
+                            // Only trigger if it looks like a redirect (simplified check)
+                            if (content && content.effects && content.effects
+                                .redirect) {
+                                cb({
+                                    url: content.effects.redirect,
+                                    preventDefault
+                                });
+                            }
+                        }),
+                        onError: (cb) => fail(({
+                            status,
+                            content,
+                            preventDefault
+                        }) => cb({
+                            status,
+                            response: content,
+                            preventDefault
+                        }))
+                    });
+                });
+            };
+
+            // Global Error Handling using the new Helper
+            Livewire.interceptRequest(({
+                onError
             }) => {
-                fail(({
-                    status,
-                    content,
-                    preventDefault
+                onError(({
+                    response,
+                    status
                 }) => {
                     if (status >= 500) {
                         Livewire.dispatch('show-toast', {
                             type: 'error',
-                            message: `Server Error (${status})`
+                            message: `Server Error (${status}): Please try again later.`
+                        });
+                    }
+                    if (status === 419) {
+                        Livewire.dispatch('show-toast', {
+                            type: 'error',
+                            message: 'Session Expired. Please refresh.'
                         });
                     }
                 });

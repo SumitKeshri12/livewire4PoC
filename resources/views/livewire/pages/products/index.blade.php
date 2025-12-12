@@ -6,10 +6,11 @@ use Livewire\Attributes\Title;
 use App\Models\Product;
 
 new #[Layout('layouts.app'), Title('Products - Livewire 4')] class extends Component {
-    public function updateFeaturedOrder($items)
+    public function updateFeaturedOrder($item, $position)
     {
-        // In a real app, update 'order' column.
-        // Here we just simulate a delay and toast.
+        // In a real app, update 'order' column for this item.
+        Product::find($item)->update(['order' => $position]);
+
         sleep(0.5);
         $this->dispatch('show-toast', type: 'success', message: 'Featured products reordered!');
     }
@@ -30,7 +31,7 @@ new #[Layout('layouts.app'), Title('Products - Livewire 4')] class extends Compo
     public function with(): array
     {
         return [
-            'featuredProducts' => Product::where('is_featured', true)->get(),
+            'featuredProducts' => Product::where('is_featured', true)->orderBy('order', 'desc')->get(),
             'totalValue' => Product::sum(\DB::raw('price * stock')),
             'lowStockCount' => Product::where('stock', '<', 10)->count(),
         ];
@@ -93,7 +94,7 @@ new #[Layout('layouts.app'), Title('Products - Livewire 4')] class extends Compo
                 @blaze
                 <ul wire:sort="updateFeaturedOrder" class="space-y-2">
                     @forelse($featuredProducts as $product)
-                        <li wire:sort.item="{{ $product->id }}" wire:key="featured-{{ $product->id }}"
+                        <li wire:sort:item="{{ $product->id }}" wire:key="featured-{{ $product->id }}"
                             class="bg-white dark:bg-zinc-800 p-3 rounded border border-zinc-200 dark:border-zinc-700 shadow-sm cursor-move flex items-center gap-2">
                             <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

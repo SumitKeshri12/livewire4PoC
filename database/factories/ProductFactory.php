@@ -45,6 +45,7 @@ class ProductFactory extends Factory
             'price' => fake()->randomFloat(2, 29, 999),
             'stock' => fake()->numberBetween(0, 100),
             'is_featured' => fake()->boolean(20), // 20% chance of being featured
+            'order' => fake()->numberBetween(1, 200),
         ];
     }
 }

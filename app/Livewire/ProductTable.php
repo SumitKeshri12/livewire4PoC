@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
+use Livewire\Attributes\On;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Components\SetUp\Exportable;
@@ -22,18 +23,39 @@ final class ProductTable extends PowerGridComponent
 
     public function setUp(): array
     {
+        // $this->showCheckBox();
         return [
             PowerGrid::header()
+                ->showToggleColumns()
                 ->showSearchInput(),
             PowerGrid::footer()
                 ->showPerPage()
-                ->showRecordCount(),
+                ->showRecordCount()
         ];
     }
 
     public function datasource(): Builder
     {
         return Product::query();
+    }
+
+    // public function header(): array
+    // {
+    //     $headerArray = [];
+
+    //     $headerArray[] = Button::add('bulk-delete')
+    //         ->slot('Delete')
+    //         ->class('px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-xs')
+    //         ->dispatch('bulk-delete', ['ids' => $this->checkboxValues]);
+
+    //     return $headerArray;
+    // }
+
+    #[On('bulk-delete')]
+    public function onBulkDelete($ids): void
+    {
+        Product::query()->whereIn('id', $ids)->delete();
+        $this->dispatch('show-toast', type: 'success', message: 'Products deleted successfully');
     }
 
     public function relationSearch(): array
