@@ -21,6 +21,7 @@
 
 <body class="font-sans antialiased bg-zinc-50 dark:bg-zinc-900">
     <div class="flex min-h-screen">
+
         <!-- Navigation Sidebar -->
         <aside class="w-64 bg-white dark:bg-zinc-800 border-r border-zinc-200 dark:border-zinc-700 flex-shrink-0">
             <div class="p-6">
@@ -197,6 +198,19 @@
                     </svg>
                     Products CRUD
                 </a>
+
+                <div class="pt-4 pb-2">
+                    <p class="px-3 text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+                        Appearance</p>
+                </div>
+
+                <div class="px-3 pb-6">
+                    <flux:radio.group x-data x-model="$flux.appearance" variant="segmented">
+                        <flux:radio value="light" icon="sun"></flux:radio>
+                        <flux:radio value="dark" icon="moon"></flux:radio>
+                        <flux:radio value="system" icon="computer-desktop"></flux:radio>
+                    </flux:radio.group>
+                </div>
             </nav>
         </aside>
 

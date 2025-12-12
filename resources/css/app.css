@@ -6,11 +6,38 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
-@source '../../vendor/power-components/livewire-powergrid/resources/views/**/*.php';
+@source '../../resources/views/vendor/livewire-powergrid/**/*.php';
 @source '../../vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../resources/views/vendor/pagination/*.blade.php';
 
 @theme {
     --font-sans: Inter, sans-serif;
+
+    /* PowerGrid Colors mapped to Zinc */
+    --color-pg-primary-50: var(--color-zinc-50);
+    --color-pg-primary-100: var(--color-zinc-100);
+    --color-pg-primary-200: var(--color-zinc-200);
+    --color-pg-primary-300: var(--color-zinc-300);
+    --color-pg-primary-400: var(--color-zinc-400);
+    --color-pg-primary-500: var(--color-zinc-500);
+    --color-pg-primary-600: var(--color-zinc-600);
+    --color-pg-primary-700: var(--color-zinc-700);
+    --color-pg-primary-800: var(--color-zinc-800);
+    --color-pg-primary-900: var(--color-zinc-900);
+    --color-pg-primary-950: var(--color-zinc-950);
+
+    --color-pg-secondary-50: var(--color-zinc-50);
+    --color-pg-secondary-100: var(--color-zinc-100);
+    --color-pg-secondary-200: var(--color-zinc-200);
+    --color-pg-secondary-300: var(--color-zinc-300);
+    --color-pg-secondary-400: var(--color-zinc-400);
+    --color-pg-secondary-500: var(--color-zinc-500);
+    --color-pg-secondary-600: var(--color-zinc-600);
+    --color-pg-secondary-700: var(--color-zinc-700);
+    --color-pg-secondary-800: var(--color-zinc-800);
+    --color-pg-secondary-900: var(--color-zinc-900);
+    --color-pg-secondary-950: var(--color-zinc-950);
 }
 
 /* Loading State Styles */
