@@ -1,5 +1,7 @@
 @import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
 
+@custom-variant dark (&:where(.dark, .dark *));
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
@@ -8,8 +10,7 @@
 @source '../../vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: Inter, sans-serif;
 }
 
 /* Loading State Styles */
@@ -73,6 +74,7 @@
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -81,23 +83,19 @@
 
 /* Skeleton Loading States */
 .skeleton {
-    background: linear-gradient(
-        90deg,
-        rgba(229, 231, 235, 1) 0%,
-        rgba(243, 244, 246, 1) 50%,
-        rgba(229, 231, 235, 1) 100%
-    );
+    background: linear-gradient(90deg,
+            rgba(229, 231, 235, 1) 0%,
+            rgba(243, 244, 246, 1) 50%,
+            rgba(229, 231, 235, 1) 100%);
     background-size: 200% 100%;
     animation: loading 1.5s ease-in-out infinite;
 }
 
 .dark .skeleton {
-    background: linear-gradient(
-        90deg,
-        rgba(39, 39, 42, 1) 0%,
-        rgba(63, 63, 70, 1) 50%,
-        rgba(39, 39, 42, 1) 100%
-    );
+    background: linear-gradient(90deg,
+            rgba(39, 39, 42, 1) 0%,
+            rgba(63, 63, 70, 1) 50%,
+            rgba(39, 39, 42, 1) 100%);
     background-size: 200% 100%;
 }
 
@@ -105,8 +103,8 @@
     0% {
         background-position: 200% 0;
     }
+
     100% {
         background-position: -200% 0;
     }
 }
-
