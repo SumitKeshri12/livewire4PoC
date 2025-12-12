@@ -44,19 +44,19 @@ final class ProductTable extends PowerGridComponent
     //     $headerArray = [];
 
     //     $headerArray[] = Button::add('bulk-delete')
-    //         ->slot('Delete')
-    //         ->class('px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-xs')
+    //         ->slot('<div title="' . __('messages.tooltip.delete') . '" class="flex items-center justify-center" data-testid="delete_button">' . view('flux.icon.trash', ['variant' => 'micro', 'attributes' => new \Illuminate\View\ComponentAttributeBag(['class' => ''])])->render() . '</div>')
+    //         ->class('px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-xs ml-auto')
     //         ->dispatch('bulk-delete', ['ids' => $this->checkboxValues]);
 
     //     return $headerArray;
     // }
 
-    #[On('bulk-delete')]
-    public function onBulkDelete($ids): void
-    {
-        Product::query()->whereIn('id', $ids)->delete();
-        $this->dispatch('show-toast', type: 'success', message: 'Products deleted successfully');
-    }
+    // #[On('bulk-delete')]
+    // public function onBulkDelete($ids): void
+    // {
+    //     Product::query()->whereIn('id', $ids)->delete();
+    //     $this->dispatch('show-toast', type: 'success', message: 'Products deleted successfully');
+    // }
 
     public function relationSearch(): array
     {
@@ -105,13 +105,13 @@ final class ProductTable extends PowerGridComponent
     {
         return [
             Button::add('edit')
-                ->slot('Edit')
+                ->slot('<div title="' . __('messages.tooltip.edit') . '" class="flex items-center justify-center" data-testid="edit_button">' . view('flux.icon.pencil', ['variant' => 'micro', 'attributes' => new \Illuminate\View\ComponentAttributeBag(['class' => ''])])->render() . '</div>')
                 ->class('px-2 py-1 bg-indigo-500 text-white rounded hover:bg-indigo-600 text-xs')
                 ->can(fn($user) => true) // Changed from authorize to can
                 ->route('products.edit', ['product' => $row->id]), // This will need a route
 
             Button::add('delete')
-                ->slot('Delete')
+                ->slot('<div title="' . __('messages.tooltip.delete') . '" class="flex items-center justify-center" data-testid="delete_button">' . view('flux.icon.trash', ['variant' => 'micro', 'attributes' => new \Illuminate\View\ComponentAttributeBag(['class' => ''])])->render() . '</div>')
                 ->class('px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-xs')
                 ->dispatch('confirm-delete', ['id' => $row->id]),
         ];
