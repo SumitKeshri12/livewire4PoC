@@ -16,4 +16,8 @@ class Product extends Model
         'stock',
         'is_featured',
     ];
+
+    protected $casts = [
+        'is_featured' => 'boolean',
+    ];
 }

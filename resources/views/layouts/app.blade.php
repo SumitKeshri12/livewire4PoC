@@ -15,6 +15,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    @fluxAppearance
     @livewireStyles
 </head>
 
@@ -38,6 +39,8 @@
                     </svg>
                     Home
                 </a>
+
+                <!-- ... rest of nav ... -->
 
                 <a href="/dashboard" wire:navigate
                     class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 {{ request()->is('dashboard') ? 'bg-zinc-100 dark:bg-zinc-700 text-zinc-900 dark:text-white' : 'text-zinc-700 dark:text-zinc-300' }}">
@@ -203,6 +206,7 @@
         </main>
     </div>
 
+    @fluxScripts
     @livewireScripts
 
     <script>

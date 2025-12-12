@@ -60,11 +60,9 @@ new #[Layout('layouts.app'), Title('Products - Livewire 4')] class extends Compo
             <div
                 class="bg-white dark:bg-zinc-800 rounded-lg p-6 border border-zinc-200 dark:border-zinc-700 shadow-sm flex items-center justify-center">
                 <!-- Smart Loading Demo -->
-                <button wire:click="refreshStats"
-                    class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition flex items-center gap-2">
-                    <span wire:loading.remove>Refresh Stats</span>
-                    <span wire:loading>Refreshing...</span>
-                </button>
+                <flux:button variant="primary" color="indigo" wire:click="refreshStats">
+                    Refresh Stats
+                </flux:button>
             </div>
         </div>
     @endisland
@@ -93,21 +91,21 @@ new #[Layout('layouts.app'), Title('Products - Livewire 4')] class extends Compo
                 <p class="text-xs text-zinc-500 mb-4">Drag to reorder (Wire Sort Demo)</p>
 
                 @blaze
-                    <ul wire:sort="updateFeaturedOrder" class="space-y-2">
-                        @forelse($featuredProducts as $product)
-                            <li wire:sort.item="{{ $product->id }}" wire:key="featured-{{ $product->id }}"
-                                class="bg-white dark:bg-zinc-800 p-3 rounded border border-zinc-200 dark:border-zinc-700 shadow-sm cursor-move flex items-center gap-2">
-                                <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M4 6h16M4 12h16M4 18h16"></path>
-                                </svg>
-                                <span
-                                    class="text-sm font-medium text-zinc-700 dark:text-zinc-200 truncate">{{ $product->name }}</span>
-                            </li>
-                        @empty
-                            <li class="text-sm text-zinc-500 text-center py-4">No featured products.</li>
-                        @endforelse
-                    </ul>
+                <ul wire:sort="updateFeaturedOrder" class="space-y-2">
+                    @forelse($featuredProducts as $product)
+                        <li wire:sort.item="{{ $product->id }}" wire:key="featured-{{ $product->id }}"
+                            class="bg-white dark:bg-zinc-800 p-3 rounded border border-zinc-200 dark:border-zinc-700 shadow-sm cursor-move flex items-center gap-2">
+                            <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                            <span
+                                class="text-sm font-medium text-zinc-700 dark:text-zinc-200 truncate">{{ $product->name }}</span>
+                        </li>
+                    @empty
+                        <li class="text-sm text-zinc-500 text-center py-4">No featured products.</li>
+                    @endforelse
+                </ul>
             </div>
         </div>
     </div>
