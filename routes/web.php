@@ -40,6 +40,9 @@ Route::match(['get', 'post'], '/multi-response-demo', App\Livewire\Pages\MultiRe
 // Observer Pattern Demo
 Route::get('/observer-demo', App\Livewire\Observer\ObserverDemo::class);
 
+// New Livewire 4 Features Demo
+Route::livewire('/new-features', 'pages.⚡new-features')->name('new-features');
+
 Route::get('db-seed', function () {
     Artisan::call('db:seed', ['--force' => true]);
     return Artisan::output();
