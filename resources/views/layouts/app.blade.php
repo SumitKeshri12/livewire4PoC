@@ -90,6 +90,15 @@
                     Blaze Optimization
                 </a>
 
+                <a href="/blaze-stress" wire:navigate
+                    class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 {{ request()->is('blaze-stress') ? 'bg-zinc-100 dark:bg-zinc-700 text-zinc-900 dark:text-white' : 'text-zinc-700 dark:text-zinc-300' }}">
+                    <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    Blaze Stress Test
+                </a>
+
                 <!-- Islands Section -->
                 <div class="pt-4 pb-2">
                     <p class="px-3 text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">

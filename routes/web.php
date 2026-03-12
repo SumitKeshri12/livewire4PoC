@@ -29,6 +29,13 @@ Route::livewire('/islands/infinite-scroll', 'pages.⚡infinite-scroll');
 Route::livewire('/islands/chat', 'pages.⚡chat');
 Route::livewire('/islands/load-more', 'pages.⚡load-more');
 
+// Blaze Stress Test
+Route::livewire('/blaze-stress', 'pages.⚡blaze-stress-test');
+Route::livewire('/blaze-pure', 'pages.⚡blaze-pure');
+Route::get('/blaze-standard', function () {
+    return view('blaze-standard-test');
+});
+
 // Product CRUD
 Route::livewire('/products', 'pages.products.index')->name('products.index');
 Route::livewire('/products/create', 'pages.products.create')->name('products.create');
@@ -39,9 +46,6 @@ Route::match(['get', 'post'], '/multi-response-demo', App\Livewire\Pages\MultiRe
 
 // Observer Pattern Demo
 Route::get('/observer-demo', App\Livewire\Observer\ObserverDemo::class);
-
-// New Livewire 4 Features Demo
-Route::livewire('/new-features', 'pages.⚡new-features')->name('new-features');
 
 Route::get('db-seed', function () {
     Artisan::call('db:seed', ['--force' => true]);

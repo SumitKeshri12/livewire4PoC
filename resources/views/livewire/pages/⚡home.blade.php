@@ -199,26 +199,6 @@ new #[Layout('layouts.app'), Title('LiveWire 4 Features PoC')] class extends Com
                 </div>
             </a>
 
-            <!-- Other New LW4 Features -->
-            <a href="{{ route('new-features') }}" wire:navigate
-                class="group bg-white dark:bg-zinc-800 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 p-6 border border-zinc-200 dark:border-zinc-700 hover:border-amber-500 dark:hover:border-amber-500">
-                <div class="flex items-center gap-4 mb-4">
-                    <div
-                        class="p-3 bg-amber-100 dark:bg-amber-900/30 rounded-lg group-hover:bg-amber-500 transition-colors text-amber-600 group-hover:text-white">
-                        <flux:icon.sparkles />
-                    </div>
-                    <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">More LW4 Features</h3>
-                </div>
-                <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
-                    Optimistic UI (wire:show), Reactive Bindings, Slots, Attribute Forwarding, Parallel Updates, and
-                    more!
-                </p>
-                <div
-                    class="flex items-center text-sm font-medium text-amber-600 dark:text-amber-400 group-hover:text-amber-700">
-                    Explore →
-                </div>
-            </a>
-
             <!-- Product CRUD Demo -->
             <a href="/products" wire:navigate
                 class="col-span-1 lg:col-span-3 group bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 p-6 border border-indigo-200 dark:border-indigo-800 hover:border-indigo-500 dark:hover:border-indigo-500">
