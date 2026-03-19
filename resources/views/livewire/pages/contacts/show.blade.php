@@ -76,7 +76,7 @@ new #[Layout('layouts.app'), Title('View Contact')] class extends Component {
         {{-- FEATURE 3: BASIC ISLAND — Contact Info Panel --}}
         {{-- ============================================================ --}}
         <div class="lg:col-span-1">
-            @island(name: 'contact-info')
+            @island
                 <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-sm border border-zinc-200 dark:border-zinc-700 p-6">
                     <div class="text-center mb-6">
                         <div class="w-20 h-20 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center mx-auto mb-3">
@@ -137,7 +137,7 @@ new #[Layout('layouts.app'), Title('View Contact')] class extends Component {
                     </div>
 
                     {{-- Nested Island: Last contacted timestamp --}}
-                    @island(name: 'last-action-time')
+                    @island
                         <p class="text-xs text-zinc-400 mt-3 text-center">Page rendered: {{ now()->format('H:i:s') }}</p>
                     @endisland
                 </div>
@@ -154,7 +154,7 @@ new #[Layout('layouts.app'), Title('View Contact')] class extends Component {
                     <span class="text-sm text-zinc-500 dark:text-zinc-400">{{ $this->activityCount }} total</span>
                 </div>
 
-                @island(name: 'activity-timeline')
+                @island
                     <div class="relative">
                         {{-- Timeline line --}}
                         <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-zinc-200 dark:bg-zinc-700"></div>

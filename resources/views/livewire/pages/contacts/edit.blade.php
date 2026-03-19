@@ -224,7 +224,7 @@ new #[Layout('layouts.app'), Title('Edit Contact')] class extends Component {
                 <span class="text-sm font-normal text-zinc-500">(Island with Load More)</span>
             </h3>
 
-            @island(name: 'activities')
+            @island
                 <div class="space-y-3 mb-4">
                     @forelse($this->activities as $activity)
                         <div wire:key="activity-{{ $activity->id }}"
@@ -244,7 +244,7 @@ new #[Layout('layouts.app'), Title('Edit Contact')] class extends Component {
                 </div>
 
                 {{-- Nested Island: Activity count --}}
-                @island(name: 'activity-count')
+                @island
                     <p class="text-xs text-zinc-400 mb-3">
                         Showing {{ min($activityLimit, $this->totalActivities) }} of {{ $this->totalActivities }} activities
                     </p>

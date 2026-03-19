@@ -61,16 +61,14 @@ new #[Layout('layouts.app'), Title('Contacts - Livewire 4 Features Demo')] class
     {{-- FEATURE 1: BASIC + NESTED ISLANDS --}}
     {{-- Stats cards wrapped in @island — they re-render independently --}}
     {{-- ============================================================ --}}
-    @island(name: 'stats')
+    @island
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div class="bg-white dark:bg-zinc-800 rounded-lg p-6 border border-zinc-200 dark:border-zinc-700 shadow-sm">
                 <h3 class="text-sm font-medium text-zinc-500 dark:text-zinc-400">Total Contacts</h3>
                 <p class="text-2xl font-bold text-zinc-900 dark:text-white mt-1">{{ $this->totalContacts }}</p>
 
                 {{-- NESTED ISLAND: Updates independently inside the parent island --}}
-                @island(name: 'last-refreshed')
-                    <p class="text-xs text-zinc-400 mt-2">Refreshed: {{ now()->format('H:i:s') }}</p>
-                @endisland
+                <p class="text-xs text-zinc-400 mt-2">Refreshed: {{ now()->format('H:i:s') }}</p>
             </div>
 
             <div class="bg-white dark:bg-zinc-800 rounded-lg p-6 border border-zinc-200 dark:border-zinc-700 shadow-sm">

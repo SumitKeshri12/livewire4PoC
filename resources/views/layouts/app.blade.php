@@ -312,6 +312,27 @@
                 });
             };
 
+            // Livewire 4 Beta: Hide those [STARTISLAND] and [ENDISLAND] markers if they are rendered as text
+            const cleanupMarkers = () => {
+                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+                let node;
+                while(node = walker.nextNode()) {
+                    if (node.textContent.includes('[STARTISLAND') || node.textContent.includes('[ENDISLAND')) {
+                        node.textContent = '';
+                    }
+                }
+            };
+
+            document.addEventListener('livewire:init', () => {
+                cleanupMarkers();
+                Livewire.hook('request', ({ respond }) => {
+                    respond(() => {
+                        // Small timeout to allow the DOM to update before cleaning again
+                        setTimeout(cleanupMarkers, 50);
+                    });
+                });
+            });
+
             // Global Error Handling using the new Helper
             Livewire.interceptRequest(({
                 onError
