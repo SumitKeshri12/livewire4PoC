@@ -41,6 +41,12 @@ Route::livewire('/products', 'pages.products.index')->name('products.index');
 Route::livewire('/products/create', 'pages.products.create')->name('products.create');
 Route::livewire('/products/{product}/edit', 'pages.products.edit')->name('products.edit');
 
+// Contacts CRUD (Livewire 4 Features Demo)
+Route::livewire('/contacts', 'pages.contacts.index')->name('contacts.index');
+Route::livewire('/contacts/create', 'pages.contacts.create')->name('contacts.create');
+Route::livewire('/contacts/{contact}', 'pages.contacts.show')->name('contacts.show');
+Route::livewire('/contacts/{contact}/edit', 'pages.contacts.edit')->name('contacts.edit');
+
 // Multi-Response Demo (supports GET and POST for API functionality)
 Route::match(['get', 'post'], '/multi-response-demo', App\Livewire\Pages\MultiResponseDemo::class);
 

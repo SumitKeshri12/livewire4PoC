@@ -199,13 +199,15 @@
                 </div>
 
                 <a href="/products" wire:navigate
-                    class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 {{ request()->is('products*') ? 'bg-zinc-100 dark:bg-zinc-700 text-zinc-900 dark:text-white' : 'text-zinc-700 dark:text-zinc-300' }}">
-                    <svg class="w-5 h-5 bg-indigo-500 text-white rounded p-0.5" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                    </svg>
+                    class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 {{ request()->is('products*') ? 'bg-zinc-100 dark:bg-zinc-700 text-zinc-900 dark:white' : 'text-zinc-700 dark:text-zinc-300' }}">
+                    <flux:icon.shopping-bag class="w-5 h-5 bg-indigo-500 text-white rounded p-0.5" />
                     Products CRUD
+                </a>
+
+                <a href="/contacts" wire:navigate
+                    class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-700 {{ request()->is('contacts*') ? 'bg-zinc-100 dark:bg-zinc-700 text-zinc-900 dark:white' : 'text-zinc-700 dark:text-zinc-300' }}">
+                    <flux:icon.user-group class="w-5 h-5 bg-emerald-500 text-white rounded p-0.5" />
+                    Contacts CRUD
                 </a>
 
                 <div class="pt-4 pb-2">

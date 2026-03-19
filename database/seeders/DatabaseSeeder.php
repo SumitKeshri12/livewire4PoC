@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             InvoiceSeeder::class,
             ProductSeeder::class,
             KanbanSeeder::class,
+            ContactSeeder::class,
         ]);
     }
 }
